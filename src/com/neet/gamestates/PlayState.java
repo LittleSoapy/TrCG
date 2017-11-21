@@ -1,5 +1,8 @@
 package com.neet.gamestates;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -8,11 +11,17 @@ import com.badlogic.gdx.math.Vector2;
 import com.neet.managers.GameStateManager;
 
 import Logic.AlgoDeBrese;
+import Logic.Reta;
 
 public class PlayState extends GameState {
 	
+	int NumeroDeRetas = 10;
+	
+	ArrayList<Reta> retas  = new ArrayList<Reta>();
+	
 	ShapeRenderer shapeRenderer;
 	AlgoDeBrese algoDeBrese;
+	Random NumeroRandomico;
 	
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
@@ -22,6 +31,13 @@ public class PlayState extends GameState {
 	public void init() {
 		shapeRenderer = new ShapeRenderer();
 		algoDeBrese = new AlgoDeBrese();
+		NumeroRandomico = new Random();
+		
+		for (int i = 0; i < NumeroDeRetas; i++) {
+			
+		}
+		
+		
 	}
 
 	@Override
