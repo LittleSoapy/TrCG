@@ -6,7 +6,14 @@ import com.badlogic.gdx.math.Vector2;
 public class AlgoDeBrese {
 	
 	public void printDot(ShapeRenderer shapeRenderer, int x, int y) {
-		shapeRenderer.line((float) x, (float) y, (float) x + 1, (float) y + 1);
+		if((x >= 200 && x <= 400) && (y >= 200 && y <= 400)) {
+			shapeRenderer.setColor(1, 0, 0, 1);
+			shapeRenderer.line((float) x, (float) y, (float) x + 1, (float) y + 1);	
+		}else {
+			shapeRenderer.setColor(0, 0, 1, 1);
+			shapeRenderer.line((float) x, (float) y, (float) x + 1, (float) y + 1);	
+		}
+			
 	}
 	
 	public void quadrado(ShapeRenderer shapeRenderer, Vector2 v1, Vector2 v2) {
