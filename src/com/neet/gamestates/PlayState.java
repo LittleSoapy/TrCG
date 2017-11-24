@@ -3,7 +3,6 @@ package com.neet.gamestates;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -33,15 +32,18 @@ public class PlayState extends GameState {
 
 	@Override
 	public void init() {
-		retanguloP1 = new Vector2(200, 200);
-		retanguloP2 = new Vector2(400, 400);
+		// tamanho do retangulo 
+		retanguloP1 = new Vector2(20, 20);
+		retanguloP2 = new Vector2(400, 300);
+		//algumas classes
 		shapeRenderer = new ShapeRenderer();
 		algoDeBrese = new AlgoDeBrese();
 		clip = new Clipping(retanguloP1, retanguloP2);
 		NumeroRandomico = new Random();
+		
 		retas = new ArrayList<Reta>();
-
-		for (int i = 0; i < 50; i++) {
+		//quantidade de retas
+		for (int i = 0; i < 800; i++) {
 
 			int x1 = NumeroRandomico.nextInt(800);
 			int y1 = NumeroRandomico.nextInt(600);
@@ -62,12 +64,13 @@ public class PlayState extends GameState {
 	public void draw() {
 		Gdx.gl30.glClearColor(0, 0, 0, 1);
 		Gdx.gl30.glClear(GL30.GL_COLOR_BUFFER_BIT);
-
+		//comeca a desenhar
 		shapeRenderer.begin(ShapeType.Line);
-		
+		//desenha quadrado
 		shapeRenderer.setColor(0, 1, 0, 1);
 		algoDeBrese.quadrado(shapeRenderer, retanguloP1, retanguloP2);
-		//
+		
+		//clipping + bresenham
 		for (Reta reta : retas) {
 			reta.CInicio = clip.Codificar(reta.inicio);
 			reta.CFim = clip.Codificar(reta.fim);
@@ -81,8 +84,7 @@ public class PlayState extends GameState {
 				if (reta.CInicio != 0) {
 					reta.inicio = clip.Clip(reta.inicio, reta.CInicio);
 					reta.CInicio = clip.Codificar(reta.inicio);
-				}
-				if(reta.CFim != 0) {
+				}else {
 					reta.fim = clip.Clip(reta.fim, reta.CFim);
 					reta.CFim = clip.Codificar(reta.fim);
 				}
