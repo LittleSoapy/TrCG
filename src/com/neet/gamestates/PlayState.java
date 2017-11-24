@@ -76,7 +76,7 @@ public class PlayState extends GameState {
 			reta.CFim = clip.Codificar(reta.fim);
 			clip.Mx = (reta.fim.y - reta.inicio.y) / (reta.fim.x - reta.inicio.x);
 			clip.My = (reta.fim.x - reta.inicio.x) / (reta.fim.y - reta.inicio.y);
-			if (!(reta.CInicio == 0 && reta.CFim == 0) && !( ((reta.CInicio / 1000) == 1 && (reta.CFim / 1000) == 1)
+			while (!(reta.CInicio == 0 && reta.CFim == 0) && !( ((reta.CInicio / 1000) == 1 && (reta.CFim / 1000) == 1)
 					|| (((reta.CInicio % 1000) / 100) == 1 && ((reta.CFim % 1000) / 100) == 1)
 					|| (((reta.CInicio % 100) / 10) == 1 && ((reta.CFim % 100) / 10) == 1)
 					|| ((reta.CInicio % 10 == 1 && reta.CFim % 10 == 1)))) {
